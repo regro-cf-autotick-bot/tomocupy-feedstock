@@ -15,9 +15,7 @@ build:
   script: 
     - for /f "tokens=* usebackq" %%f in (`where nvcc`) do (set "dummy=%%f" && call set "CUDACXX=%%dummy:\=\\%%")  # [win]
     - echo %CUDACXX% # [win]
-    - set CMAKE_CUDA_COMPILER=%CUDACXX% # [win]
-    - set CUDA_HOME=%CUDACXX% # [win]
-    - set CUDA_TOOLKIT_ROOT_DIR=%CUDACXX% # [win]    
+    - %CUDACXX% --version # [win]    
     - set CMAKE_CUDA_COMPILER=%CUDACXX% # [win]    
     - {{ PYTHON }} -m pip install . -vv     
   script_env:
