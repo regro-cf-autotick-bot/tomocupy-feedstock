@@ -1,4 +1,5 @@
 {% set version = "1.0.0" %}
+{% set build = 0 %}
 
 package:
   name: tomocupy
@@ -11,8 +12,10 @@ build:
   skip: True  # [cuda_compiler_version == "10.2"]
   skip: True  # [cuda_compiler_version in (undefined, "None")]
   number: 0
-  script: build-cxx.bat  # [win]
-  # script: {{ PYTHON }} -m pip install . -vv  
+  script: 
+    - for /f "tokens=* usebackq" %%f in (`where nvcc`) do (set "dummy=%%f" && call set "CUDACXX=%%dummy:\=\\%%")  # [win]
+    - echo %CUDACXX% # [win]
+    # script: {{ PYTHON }} -m pip install . -vv  
   script_env:
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
