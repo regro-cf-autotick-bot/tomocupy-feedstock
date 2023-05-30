@@ -15,7 +15,7 @@ build:
   script: 
     - for /f "tokens=* usebackq" %%f in (`where nvcc`) do (set "dummy=%%f" && call set "CUDACXX=%%dummy:\=\\%%")  # [win]
     - echo %CUDACXX% # [win]
-    # script: {{ PYTHON }} -m pip install . -vv  
+    - {{ PYTHON }} -m pip install . -vv  
   script_env:
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
