@@ -18,9 +18,8 @@ build:
     - set CMAKE_CUDA_COMPILER=%CUDACXX% # [win]
     - set CUDA_HOME=%CUDACXX% # [win]
     - set CUDA_TOOLKIT_ROOT_DIR=%CUDACXX% # [win]    
-    - echo %CMAKE_CUDA_COMPILER% # [win]
-    - {{ PYTHON }} -m pip install . -vv  # [linux]
-    - {{ PYTHON }} -m pip install . -vv -DCMAKE_CUDA_COMPILER:FILEPATH=%CUDACXX%  # [win]
+    - set CMAKE_CUDA_COMPILER=%CUDACXX% # [win]    
+    - {{ PYTHON }} -m pip install . -vv     
   script_env:
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
