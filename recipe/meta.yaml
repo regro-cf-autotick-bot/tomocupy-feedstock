@@ -27,7 +27,7 @@ requirements:
     - ninja [linux]
     - swig
   host:
-    - cudatoolkit  # [cuda_compiler_version != "None"]
+#    - cudatoolkit  # [cuda_compiler_version != "None"]
     - numpy
     - pip
     - python
@@ -35,13 +35,13 @@ requirements:
     - setuptools
   run:
     - python
-    - cupy
-    - h5py
-    - numexpr
-    - numpy
-    - opencv
-    - pywavelets
-    - tifffile
+#   - cupy
+#   - h5py
+#   - numexpr
+#    - numpy
+#    - opencv
+#    - pywavelets
+#    - tifffile
 
 test:
    requires:
