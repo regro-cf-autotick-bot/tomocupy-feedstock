@@ -1,4 +1,4 @@
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 {% set build = 0 %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tomography/tomocupy/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f987c5d934b5616849d1988a47133eab39964c2b6b5b8d349a1a832f021509d4
+  sha256: 9f57907a829a56495e5b9817f03905c72d13b336089cd623a270fb5027d9d997
 build:
   skip: True  # [cuda_compiler_version == "10.2"]
   skip: True  # [cuda_compiler_version in (undefined, "None")]
