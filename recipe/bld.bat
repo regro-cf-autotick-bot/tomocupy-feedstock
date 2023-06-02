@@ -6,6 +6,10 @@ echo CUDAToolkit path is %CudaToolkitDir%
 echo CMake Generator is %CMAKE_GENERATOR%
 echo CUDAARCHS are %CUDAARCHS%
 
-set "CUDAToolkit_ROOT=%CudaToolkitDir%"  
+set CUDAToolkit_ROOT=%CudaToolkitDir%
+set CMAKE_CUDA_COMPILER=%CUDACXX%
+
+echo CMAKE_CUDA_COMPILER is %CMAKE_CUDA_COMPILER%
+
 
 %PYTHON% -m pip install . -vv --no-build-isolation --no-deps
