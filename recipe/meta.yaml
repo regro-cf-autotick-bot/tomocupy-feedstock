@@ -17,7 +17,8 @@ build:
   script_env:
     - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
-    - CUDAARCHS=60;72;75
+    - CUDAARCHS=60 
+    #;72;75
 requirements:
   build:
     - {{ compiler('cxx') }}
