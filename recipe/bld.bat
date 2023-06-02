@@ -13,7 +13,7 @@ echo CMAKE_CUDA_COMPILER is %CMAKE_CUDA_COMPILER%
 echo CMAKE_CUDA_COMPILER_TOOLKIT_ROOT is %CMAKE_CUDA_COMPILER_TOOLKIT_ROOT%
 set CMAKE_CUDA_COMPILER_TOOLKIT_ROOT="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2"
 set CUDATOOLKITDIR = "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2"
-set NVCC="%CUDACXX% --use-local-env"
+set NVCC="%CUDACXX%"
 echo "nvcc is %NVCC%, CUDA path is %CUDA_PATH%" 
 
 
