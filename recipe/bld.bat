@@ -8,8 +8,10 @@ echo CUDAARCHS are %CUDAARCHS%
 
 set CUDAToolkit_ROOT=%CudaToolkitDir%
 set CMAKE_CUDA_COMPILER=%CUDACXX%
+set CMAKE_CUDA_COMPILER_LIBRARY_ROOT=%CudaToolkitDir%\lib\x64
+
 
 echo CMAKE_CUDA_COMPILER is %CMAKE_CUDA_COMPILER%
-
+echo CMAKE_CUDA_COMPILER_LIBRARY_ROOT is %CMAKE_CUDA_COMPILER_LIBRARY_ROOT%
 
 %PYTHON% -m pip install . -vv --no-build-isolation --no-deps
