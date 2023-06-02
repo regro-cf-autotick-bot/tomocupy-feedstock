@@ -1,5 +1,4 @@
-#for /f "tokens=* usebackq" %%f in (`where nvcc`) do (set "dummy=%%f" && call set "CUDACXX=%%dummy:\=\\%%")  
-set CUDACXX="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin\nvcc"
+set CUDACXX="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin\nvcc.exe"
 echo nvcc is %CUDACXX%   
 echo CUDA path is %CUDA_PATH%   
 echo CUDAToolkit path is %CudaToolkitDir%
