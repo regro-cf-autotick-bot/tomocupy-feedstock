@@ -17,4 +17,4 @@ set CMAKE_CUDA_COMPILER_TOOLKIT_ROOT=%CudaToolkitDir%
 
 if exist "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin/nvcc.exe" echo "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin/nvcc.exe exist" 
 
-%PYTHON% -m pip install . -vv --no-build-isolation --no-deps
+%PYTHON% -m pip install . -vvv --no-build-isolation --no-deps

@@ -15,7 +15,7 @@ build:
   script: 
     - {{ PYTHON }} -m pip install . -vv [linux]    
   script_env:
-    - CMAKE_GENERATOR="Visual Studio 16 2019"
+    #- CMAKE_GENERATOR="Ninja"
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60 
     #;72;75
