@@ -14,8 +14,8 @@ build:
   number: 0
   script: 
     - {{ PYTHON }} -m pip install . -vv [linux]    
-  script_env:
-    #- CMAKE_GENERATOR="Ninja"
+  script_env:    
+    - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60 
     #;72;75
@@ -41,7 +41,7 @@ requirements:
 #    - numpy
 #    - opencv
 #    - pywavelets
-#    - tifffile
+    # - tifffile
 
 test:
    requires:
