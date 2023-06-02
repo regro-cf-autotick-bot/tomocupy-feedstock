@@ -13,10 +13,7 @@ build:
   skip: True  # [cuda_compiler_version in (undefined, "None")]
   number: 0
   script: 
-    - for /f "tokens=* usebackq" %%f in (`where nvcc`) do (set "dummy=%%f" && call set "CUDACXX=%%dummy:\=\\%%")  # [win]
-    - echo nvcc is %CUDACXX%
-    - echo CUDA path is %CUDA_PATH%
-    - {{ PYTHON }} -m pip install . -vv     
+    - {{ PYTHON }} -m pip install . -vv [linux]    
   script_env:
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
@@ -28,7 +25,7 @@ requirements:
     - ninja
     - swig
   host:
-    - cudatoolkit  # [cuda_compiler_version != "None"]
+    #- cudatoolkit  # [cuda_compiler_version != "None"]
     - numpy
     - pip
     - python
