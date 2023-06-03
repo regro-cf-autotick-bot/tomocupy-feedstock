@@ -9,7 +9,7 @@ source:
   url: https://github.com/tomography/tomocupy/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 9f57907a829a56495e5b9817f03905c72d13b336089cd623a270fb5027d9d997
 build:
-  skip: True  # [cuda_compiler_version in (undefined, "None", "12.0")]
+  skip: True  # [cuda_compiler_version in (undefined, "None", "12.0", "10.2")]
   number: 0
   script: 
     - {{ PYTHON }} -m pip install . -vv 
