@@ -15,9 +15,6 @@ set CUDAToolkit_ROOT=%CudaToolkitDir%
 set CMAKE_CUDA_COMPILER=%CUDACXX%
 set CMAKE_CUDA_COMPILER_TOOLKIT_ROOT=%CudaToolkitDir%
 
-set CMAKE_CUDA_FLAGS="-allow-unsupported-compiler"
-set CMAKE_CUDA_FLAGS_INIT="-allow-unsupported-compiler"
-
-if exist "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin/nvcc.exe" echo "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin/nvcc.exe exist" 
+set CMAKE_GENERATOR=Visual Studio 16 2019
 
 %PYTHON% -m pip install . -vvv --no-build-isolation --no-deps
