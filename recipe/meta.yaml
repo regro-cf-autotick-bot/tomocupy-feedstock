@@ -26,7 +26,7 @@ requirements:
     - ninja [linux]
     - swig
   host:
-#    - cudatoolkit  # [cuda_compiler_version != "None"]
+    - cudatoolkit  # [cuda_compiler_version != "None"]
     - numpy
     - pip
     - python
