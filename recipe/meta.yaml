@@ -19,11 +19,6 @@ build:
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
 
-azure:
-  settings_win:
-    pool:
-      vmImage: windows-2019
-
 requirements:
   build:
     - {{ compiler('cxx') }}
