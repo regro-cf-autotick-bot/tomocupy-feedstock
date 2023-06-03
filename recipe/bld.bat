@@ -15,6 +15,5 @@ set CUDAToolkit_ROOT=%CudaToolkitDir%
 set CMAKE_CUDA_COMPILER=%CUDACXX%
 set CMAKE_CUDA_COMPILER_TOOLKIT_ROOT=%CudaToolkitDir%
 
-set CMAKE_GENERATOR="Visual Studio 16 2019"
 
 %PYTHON% -m pip install . -vvv --no-build-isolation --no-deps
