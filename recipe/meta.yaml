@@ -13,18 +13,23 @@ build:
   skip: True  # [cuda_compiler_version in (undefined, "None")]
   number: 0
   script: 
-    - {{ PYTHON }} -m pip install . -vv [linux]    
+    - {{ PYTHON }} -m pip install . -vv #[linux]    
   script_env:    
-    - CMAKE_GENERATOR=Ninja
+    #- CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
+
+azure:
+  settings_win:
+    pool:
+      vmImage: windows-2019
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
     - cmake
-    - ninja [linux]
+    - ninja #[linux]
     - swig
   host:
     - cudatoolkit  # [cuda_compiler_version != "None"]
