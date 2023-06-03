@@ -9,7 +9,7 @@ source:
   url: https://github.com/tomography/tomocupy/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 9f57907a829a56495e5b9817f03905c72d13b336089cd623a270fb5027d9d997
 build:
-  skip: True  # [cuda_compiler_version != "12.0"]
+  skip: True  # [cuda_compiler_version != "11.2"]
   skip: True  # [cuda_compiler_version in (undefined, "None")]
   number: 0
   script: 
@@ -18,6 +18,12 @@ build:
     - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
+
+azure:
+  settings_win:
+    pool:
+      vmImage: windows-2019
+
 requirements:
   build:
     - {{ compiler('cxx') }}
@@ -34,13 +40,13 @@ requirements:
     - setuptools
   run:
     - python
-#   - cupy
-#   - h5py
-#   - numexpr
-#    - numpy
-#    - opencv
-#    - pywavelets
-    # - tifffile
+    - cupy
+    - h5py
+    - numexpr
+    - numpy
+    - opencv
+    - pywavelets
+    - tifffile
 
 test:
    requires:
