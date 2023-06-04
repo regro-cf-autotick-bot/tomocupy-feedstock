@@ -4,3 +4,8 @@ github:
 conda_build:
   error_overlinking: true
 conda_forge_output_validation: true
+azure:
+  settings_win:
+    pool:
+      vmImage: windows-2019
+  store_build_artifacts: true

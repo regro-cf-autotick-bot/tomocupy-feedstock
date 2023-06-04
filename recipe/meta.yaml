@@ -1,4 +1,5 @@
-{% set version = "1.0.0" %}
+{% set version = "1.0" %}
+{% set build = 0 %}
 
 package:
   name: tomocupy
@@ -6,13 +7,16 @@ package:
 
 source:
   url: https://github.com/tomography/tomocupy/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f987c5d934b5616849d1988a47133eab39964c2b6b5b8d349a1a832f021509d4
+  sha256: c280472e81ac90147680a1d1d71e312c69c47428e9b2e6731e759ef40cff5140
+
 build:
   skip: True  # [cuda_compiler_version == "10.2"]
   skip: True  # [cuda_compiler_version in (undefined, "None")]
-  number: 1
+  skip: True  # [cuda_compiler_version == "12.0"]
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
+    - CMAKE_GENERATOR=Ninja  # [not win]
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
 requirements:
@@ -20,7 +24,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
     - cmake
-    - ninja
+    - ninja  # [not win]
     - swig
   host:
     - cudatoolkit  # [cuda_compiler_version != "None"]
@@ -49,14 +53,15 @@ test:
      - pip check
 # Conda-forge bots do not have GPUs for testing
 #      - tomocupy --help
-     
+
 about:
     home: https://github.com/tomography/tomocupy
     license: BSD-3-Clause
     license_family: BSD
     license_file: .licenses/license.c
     summary: 'GPU-based reconstruction of tomography data'
-    
+
 extra:
   recipe-maintainers:
     - nikitinvv
+    
