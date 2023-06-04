@@ -26,7 +26,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
     - cmake
-    - ninja  # [not win]
+    - ninja
     - swig
   host:
     - cudatoolkit  # [cuda_compiler_version != "None"]

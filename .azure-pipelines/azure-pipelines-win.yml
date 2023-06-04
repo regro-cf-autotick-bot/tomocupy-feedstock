@@ -5,11 +5,9 @@
 jobs:
 - job: win
   pool:
-    vmImage: windows-2019
+    vmImage: windows-2022
   strategy:
     matrix:
-<<<<<<< HEAD
-=======
       win_64_cuda_compilernvcccuda_compiler_version11.0python3.10.____cpython:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.0python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -34,7 +32,6 @@ jobs:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.1python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hbcff7d2f4b
->>>>>>> upstream/main
       win_64_cuda_compilernvcccuda_compiler_version11.2python3.10.____cpython:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
