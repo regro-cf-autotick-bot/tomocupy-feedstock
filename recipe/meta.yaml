@@ -13,8 +13,8 @@ build:
   skip: True  # [cuda_compiler_version == "10.2"]
   skip: True  # [cuda_compiler_version in (undefined, "None")]
   skip: True  # [cuda_compiler_version == "12.0"]
-  number: 2
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv  # [not win]
   script_env:
     - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
@@ -66,4 +66,3 @@ about:
 extra:
   recipe-maintainers:
     - nikitinvv
-    
