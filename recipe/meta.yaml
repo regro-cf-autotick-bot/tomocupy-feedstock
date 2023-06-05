@@ -1,5 +1,6 @@
-{% set version = "1.0" %}
-{% set build = 0 %}
+{% set version = "1.0.2" %}
+
+{% set cuda_major = environ.get("cuda_compiler_version", "11.2").split(".")[0]|int %}
 
 package:
   name: tomocupy
@@ -7,27 +8,35 @@ package:
 
 source:
   url: https://github.com/tomography/tomocupy/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c280472e81ac90147680a1d1d71e312c69c47428e9b2e6731e759ef40cff5140
+  sha256: 68168288ee3423ec45f4884bc22589586f449b0fcaebe6bd13a6d616235b32ae
 
 build:
   skip: True  # [cuda_compiler_version == "10.2"]
   skip: True  # [cuda_compiler_version in (undefined, "None")]
   skip: True  # [cuda_compiler_version == "12.0"]
-  number: 2
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+  # scikit-build tries to find the latest MSVC compiler instead instead of using
+  # cl.exe from the current environment, so on Windows we need to set the full
+  # compiler paths in a script.
+  script: {{ PYTHON }} -m pip install . -vv  # [not win]
   script_env:
-    - CMAKE_GENERATOR=Ninja  # [not win]
+    - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
+  entry_points:
+    - tomocupy = tomocupy.__main__:main
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
     - cmake
-    - ninja  # [not win]
+    - ninja
     - swig
   host:
-    - cudatoolkit  # [cuda_compiler_version != "None"]
+{% if cuda_major == 12 %}
+    - cuda-cudart-dev
+    - libcufft-dev
+{% endif %}
     - numpy
     - pip
     - python
@@ -64,4 +73,3 @@ about:
 extra:
   recipe-maintainers:
     - nikitinvv
-    
