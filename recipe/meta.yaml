@@ -1,5 +1,6 @@
 {% set version = "1.0.2" %}
-{% set build = 0 %}
+
+{% set cuda_major = environ.get("cuda_compiler_version", "11.2").split(".")[0]|int %}
 
 package:
   name: tomocupy
@@ -14,6 +15,9 @@ build:
   skip: True  # [cuda_compiler_version in (undefined, "None")]
   skip: True  # [cuda_compiler_version == "12.0"]
   number: 0
+  # scikit-build tries to find the latest MSVC compiler instead instead of using
+  # cl.exe from the current environment, so on Windows we need to set the full
+  # compiler paths in a script.
   script: {{ PYTHON }} -m pip install . -vv  # [not win]
   script_env:
     - CMAKE_GENERATOR=Ninja
@@ -29,7 +33,10 @@ requirements:
     - ninja
     - swig
   host:
-    - cudatoolkit  # [cuda_compiler_version != "None"]
+{% if cuda_major == 12 %}
+    - cuda-cudart-dev
+    - libcufft-dev
+{% endif %}
     - numpy
     - pip
     - python
