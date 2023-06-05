@@ -1,4 +1,4 @@
-{% set version = "1.0.2" %}
+{% set version = "1.0.3" %}
 
 {% set cuda_major = environ.get("cuda_compiler_version", "11.2").split(".")[0]|int %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/tomography/tomocupy/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 68168288ee3423ec45f4884bc22589586f449b0fcaebe6bd13a6d616235b32ae
+  sha256: 144e5ec1b6a6202139a642d9048e9c77f19a4eb8749afa784ddb3d4a7c5f30c0
 
 build:
   skip: True  # [cuda_compiler_version == "10.2"]
