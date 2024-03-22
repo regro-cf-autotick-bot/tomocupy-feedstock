@@ -32,8 +32,8 @@ requirements:
     - ninja
     - swig
   host:
+    - cuda-version {{ cuda_compiler_version }}
 {% if cuda_major == 12 %}
-    - cuda-version
     - cuda-cudart-dev
     - libcufft-dev
 {% endif %}
