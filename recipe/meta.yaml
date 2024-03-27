@@ -17,7 +17,7 @@ build:
   # scikit-build tries to find the latest MSVC compiler instead instead of using
   # cl.exe from the current environment, so on Windows we need to set the full
   # compiler paths in a script.
-  script: {{ PYTHON }} -m pip install . -vv  # [not win]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [not win]
   script_env:
     - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
