@@ -19,6 +19,7 @@ build:
   # compiler paths in a script.
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [not win]
   script_env:
+    - SKBUILD_BUILD_OPTIONS="-GNinja"
     - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
     - CUDAARCHS=60;72;75
