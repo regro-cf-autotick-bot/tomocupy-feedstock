@@ -1,4 +1,4 @@
-{% set version = "1.0.3" %}
+{% set version = "1.0.4" %}
 
 {% set cuda_major = environ.get("cuda_compiler_version", "11.2").split(".")[0]|int %}
 
@@ -8,17 +8,16 @@ package:
 
 source:
   url: https://github.com/tomography/tomocupy/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 144e5ec1b6a6202139a642d9048e9c77f19a4eb8749afa784ddb3d4a7c5f30c0
+  sha256: 2e78c9269471824fce4cc25bbb2c8a9b1661baaa25e0b47fe44479b1548a429e
 
 build:
-  skip: True  # [cuda_compiler_version == "10.2"]
-  skip: True  # [cuda_compiler_version in (undefined, "None")]
-  skip: True  # [cuda_compiler_version == "12.0"]
-  number: 2
+  skip: true  # [cuda_compiler_version == "10.2"]
+  skip: true  # [cuda_compiler_version in (undefined, "None")]
+  number: 0
   # scikit-build tries to find the latest MSVC compiler instead instead of using
   # cl.exe from the current environment, so on Windows we need to set the full
   # compiler paths in a script.
-  script: {{ PYTHON }} -m pip install . -vv  # [not win]
+  script: CMAKE_GENERATOR=Ninja {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation  # [not win]
   script_env:
     - CMAKE_GENERATOR=Ninja
   # Minimum supported arch of this package is 60
@@ -33,6 +32,7 @@ requirements:
     - ninja
     - swig
   host:
+    - cuda-version {{ cuda_compiler_version }}
 {% if cuda_major == 12 %}
     - cuda-cudart-dev
     - libcufft-dev
@@ -53,22 +53,22 @@ requirements:
     - tifffile
 
 test:
-   requires:
-     - pip
-   imports:
+  requires:
+    - pip
+  imports:
 # Conda-forge bots do not have GPUs for testing
 #      - tomocupy
-   commands:
-     - pip check
+  commands:
+    - pip check
 # Conda-forge bots do not have GPUs for testing
 #      - tomocupy --help
 
 about:
-    home: https://github.com/tomography/tomocupy
-    license: BSD-3-Clause
-    license_family: BSD
-    license_file: .licenses/license.c
-    summary: 'GPU-based reconstruction of tomography data'
+  home: https://github.com/tomography/tomocupy
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: .licenses/license.c
+  summary: 'GPU-based reconstruction of tomography data'
 
 extra:
   recipe-maintainers:
