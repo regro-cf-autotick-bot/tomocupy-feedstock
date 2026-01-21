@@ -20,10 +20,10 @@ jobs:
         CONFIG: win_64_cuda_compiler_version12.9python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._h1e9b8858
-      win_64_cuda_compiler_version12.9python3.9.____cpython:
-        CONFIG: win_64_cuda_compiler_version12.9python3.9.____cpython
+      win_64_cuda_compiler_version12.9python3.13.____cp313:
+        CONFIG: win_64_cuda_compiler_version12.9python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._h5c1a3ac2
+        SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._h689d003e
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
