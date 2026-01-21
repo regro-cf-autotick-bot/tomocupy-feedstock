@@ -11,7 +11,6 @@ source:
   sha256: 09063b44fa1f3dbcb5509743e217b1f6a1a0ac625ce3cea5ffb7146c72f83c4a
 
 build:
-  skip: true  # [cuda_compiler_version == "10.2"]
   skip: true  # [cuda_compiler_version in (undefined, "None")]
   number: 2
   # scikit-build tries to find the latest MSVC compiler instead instead of using
